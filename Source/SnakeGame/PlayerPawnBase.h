@@ -16,7 +16,7 @@ class SNAKEGAME_API APlayerPawnBase : public APawn
     GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
+    // Sets default values for this pawn's properties
 	APlayerPawnBase();
 
     UPROPERTY(BlueprintReadWrite) 
@@ -29,7 +29,12 @@ public:
     TSubclassOf<ASnake> SnakeActorClass;
 protected:
 	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+    // Called when the game starts or when spawned
+    virtual void BeginPlay() override
+    {
+        Super::BeginPlay();
+        SetActorRotation(FRotator(-90, 0, 0));
+    }
 
 public:	
 	// Called every frame
@@ -38,5 +43,14 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-    void CreateSnakeActor();
+    void CreateSnakeActor()
+    {
+        SnakeActor = GetWorld()->SpawnActor<ASnake>(SnakeActorClass, FTransform());
+    }
+
+    UFUNCTION()
+    void HandlePlayerVerticalInput(float value);
+
+    UFUNCTION()
+    void HandlePlayerHorizontalInput(float value);
 };
