@@ -3,8 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Snake.h"
 #include "GameFramework/Pawn.h"
 #include "PlayerPawnBase.generated.h"
+
 
 
 class UCameraComponent;

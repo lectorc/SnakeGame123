@@ -3,8 +3,8 @@
 
 #include "PlayerPawnBase.h"
 #include "Camera/CameraComponent.h"
-#include "Snake.h"
 #include "Components/InputComponent.h"
+#include "Snake.h"
 
 // Sets default values
 APlayerPawnBase::APlayerPawnBase()
