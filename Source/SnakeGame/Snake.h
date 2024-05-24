@@ -7,6 +7,7 @@
 #include "Snake.generated.h"
 
 
+
 class ASnakeElementBase;
 
 UENUM()
@@ -45,12 +46,43 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
+public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
     void AddSnakeElement(int ElementsNum = 1);
     
-    void Move();
+    void Move()
+    {
+        FVector MovementVector(ForceInitToZero);
+        MovementSpeed = ElementSize;
+        switch (LastMoveDirection)
+        {
+        case EMovementDirection::UP:
+            MovementVector.X += MovementSpeed;
+            break;
+        case EMovementDirection::DOWN:
+            MovementVector.X -= MovementSpeed;
+            break;
+        case EMovementDirection::LEFT:
+            MovementVector.Y += MovementSpeed;
+            break;
+        case EMovementDirection::RIGHT:
+            MovementVector.Y -= MovementSpeed;
+            break;
+        }
+        //AddActorWorldOffset(MovementVector);
+
+        for (int i = SnakeElements.Num() - 1; i > 0; i--)
+        {
+            auto CurrentElement = SnakeElements[i];
+            auto PrevElement = SnakeElements[i - 1];
+            FVector PrevLocation = PrevElement->GetActorLocation();
+            CurrentElement->SetActorLocation(PrevLocation);
+
+        }
+
+        SnakeElements[0]->AddActorWorldOffset(MovementVector);
+    }
 };
 

@@ -4,7 +4,7 @@
 #include "PlayerPawnBase.h"
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
-#include "Snake.h"
+
 
 // Sets default values
 APlayerPawnBase::APlayerPawnBase()
@@ -28,7 +28,6 @@ void APlayerPawnBase::Tick(float DeltaTime)
 void APlayerPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
     PlayerInputComponent->BindAxis("Horizontal", this, &APlayerPawnBase::HandlePlayerHorizontalInput);
     PlayerInputComponent->BindAxis("Vertical", this, &APlayerPawnBase::HandlePlayerVerticalInput);
 

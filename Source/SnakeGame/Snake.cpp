@@ -41,7 +41,6 @@ void ASnake::AddSnakeElement(int ElementsNum)
         {
             NewSnakeElem->SetFirstElementType();
         }
-
     }
 }
 
@@ -74,7 +73,5 @@ void ASnake::Move()
         CurrentElement->SetActorLocation(PrevLocation);
 
     }
-
     SnakeElements[0]->AddActorWorldOffset(MovementVector);  
 }
-

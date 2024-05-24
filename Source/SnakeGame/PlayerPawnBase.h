@@ -10,7 +10,7 @@
 
 
 class UCameraComponent;
-class ASnake;
+
 
 UCLASS()
 class SNAKEGAME_API APlayerPawnBase : public APawn
@@ -36,6 +36,7 @@ protected:
     {
         Super::BeginPlay();
         SetActorRotation(FRotator(-90, 0, 0));
+        CreateSnakeActor();
     }
 
 public:	

@@ -14,7 +14,7 @@ class SNAKEGAME_API ASnakeElementBase : public AActor
 	
 public:	
 	// Sets default values for this actor's properties
-	ASnakeElementBase();
+	ASnakeElementBase();        
 
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
     UStaticMeshComponent* MeshComponent;
