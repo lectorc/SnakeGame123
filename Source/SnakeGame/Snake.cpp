@@ -48,7 +48,7 @@ void ASnake::AddSnakeElement(int ElementsNum)
 
 void ASnake::Move(float delta)
 {
-    FVector MovementVector(ForceInitToZero);
+    FVector MovementVector(FVector::ZeroVector);
     float MovementSpeedDelta = MovementSpeed * ElementSize * delta;
     switch (LastMoveDirection)
     {

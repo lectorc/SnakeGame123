@@ -30,8 +30,6 @@ public:
     UPROPERTY(EditDefaultsOnly)
     TSubclassOf<ASnake> SnakeActorClass;
 protected:
-	// Called when the game starts or when spawned
-    // Called when the game starts or when spawned
     virtual void BeginPlay() override
     {
         Super::BeginPlay();
