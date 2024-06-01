@@ -10,7 +10,7 @@ ASnake::ASnake()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-    ElementSize = 50.f;
+    ElementSize = 150.f;
     MovementSpeed = 10.f;
     LastMoveDirection = EMovementDirection::DOWN;
 }
@@ -27,7 +27,7 @@ void ASnake::BeginPlay()
 void ASnake::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
-    Move(1);
+    Move();
 }
 
 void ASnake::AddSnakeElement(int ElementsNum)
@@ -46,23 +46,22 @@ void ASnake::AddSnakeElement(int ElementsNum)
     }
 }
 
-void ASnake::Move(float delta)
+void ASnake::Move()
 {
-    FVector MovementVector(FVector::ZeroVector);
-    float MovementSpeedDelta = MovementSpeed * ElementSize * delta;
+    FVector MovementVector(ForceInitToZero);
     switch (LastMoveDirection)
     {
     case EMovementDirection::UP:
-        MovementVector.X += MovementSpeedDelta;
+        MovementVector.X += ElementSize;
         break;
     case EMovementDirection::DOWN:
-        MovementVector.X -= MovementSpeedDelta;
+        MovementVector.X -= ElementSize;
         break;
     case EMovementDirection::LEFT :
-        MovementVector.Y += MovementSpeedDelta;
+        MovementVector.Y += ElementSize;
         break;
     case EMovementDirection::RIGHT:
-        MovementVector.Y -= MovementSpeedDelta;
+        MovementVector.Y -= ElementSize;
         break;  
     }
      //AddActorWorldOffset(MovementVector);

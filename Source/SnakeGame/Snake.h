@@ -52,7 +52,7 @@ public:
     UFUNCTION(BlueprintCallable)
     void AddSnakeElement(int ElementsNum = 1);
     UFUNCTION(BlueprintCallable)
-    void Move(float delta);
+    void Move();
     UFUNCTION()
     void SnakeElementOverlap(ASnakeElementBase* OverlappedElement, AActor* Other);
 };
