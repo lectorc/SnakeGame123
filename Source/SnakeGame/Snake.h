@@ -55,5 +55,8 @@ public:
     void Move();
     UFUNCTION()
     void SnakeElementOverlap(ASnakeElementBase* OverlappedElement, AActor* Other);
+    UFUNCTION(BlueprintCallable, category = "Disable")
+    void ToggleHidden (AActor* Actor, bool bNewHidden);
+    
 };
 

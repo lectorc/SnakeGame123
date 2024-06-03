@@ -21,6 +21,7 @@ void ASnake::BeginPlay()
     Super::BeginPlay();
     SetActorTickInterval(1/MovementSpeed);
     AddSnakeElement(5);
+    
 }
 
 // Called every frame
@@ -30,13 +31,23 @@ void ASnake::Tick(float DeltaTime)
     Move();
 }
 
-void ASnake::AddSnakeElement(int ElementsNum)
+void ASnake::ToggleHidden(AActor* Actor, bool bNewHidden)
+{
+    Actor->SetActorHiddenInGame(bNewHidden);
+}
+
+   void ASnake::AddSnakeElement(int ElementsNum)
 {
     for (int i = 0; i < ElementsNum; ++i)
     {
         FVector NewLocation(SnakeElements.Num() * ElementSize, 0, 0);
         FTransform NewTransform(NewLocation);
         ASnakeElementBase* NewSnakeElem = GetWorld()->SpawnActor<ASnakeElementBase>(SnakeElementClass, NewTransform);
+        ToggleHidden(NewSnakeElem, true);
+        ToggleHidden(NewSnakeElem, false);               
+       
+        
+       
         NewSnakeElem->SnakeOwner = this;
         int32 ElemIndex = SnakeElements.Add(NewSnakeElem);
         if (ElemIndex == 0)
