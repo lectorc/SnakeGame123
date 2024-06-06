@@ -18,6 +18,13 @@ APlayerPawnBase::APlayerPawnBase()
 
 
 
+inline void APlayerPawnBase::BeginPlay()
+{
+    Super::BeginPlay();
+    SetActorRotation(FRotator(-90, 0, 0));
+    CreateSnakeActor();
+}
+
 void APlayerPawnBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);

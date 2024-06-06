@@ -48,7 +48,7 @@ protected:
 
 public:
 	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+    virtual void Tick(float DeltaTime, bool wasMove = false);
     UFUNCTION(BlueprintCallable)
     void AddSnakeElement(int ElementsNum = 1);
     UFUNCTION(BlueprintCallable)

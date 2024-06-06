@@ -6,6 +6,7 @@
 #include "Interactable.h"
 // Sets default values
 
+
 ASnake::ASnake()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
@@ -25,7 +26,7 @@ void ASnake::BeginPlay()
 }
 
 // Called every frame
-void ASnake::Tick(float DeltaTime)
+void ASnake::Tick(float DeltaTime, bool wasMove)
 {
     Super::Tick(DeltaTime);
     Move();
@@ -44,10 +45,6 @@ void ASnake::ToggleHidden(AActor* Actor, bool bNewHidden)
         FTransform NewTransform(NewLocation);
         ASnakeElementBase* NewSnakeElem = GetWorld()->SpawnActor<ASnakeElementBase>(SnakeElementClass, NewTransform);
         ToggleHidden(NewSnakeElem, true);
-        ToggleHidden(NewSnakeElem, false);               
-       
-        
-       
         NewSnakeElem->SnakeOwner = this;
         int32 ElemIndex = SnakeElements.Add(NewSnakeElem);
         if (ElemIndex == 0)
@@ -84,9 +81,10 @@ void ASnake::Move()
         auto PrevElement = SnakeElements[i - 1];
         FVector PrevLocation = PrevElement->GetActorLocation();
         CurrentElement->SetActorLocation(PrevLocation);
-
+        ToggleHidden(CurrentElement, false);
     }
     SnakeElements[0]->AddActorWorldOffset(MovementVector);
+    ToggleHidden(SnakeElements[0], false);
     SnakeElements[0]->ToggleCollision();
 }
 

@@ -30,12 +30,7 @@ public:
     UPROPERTY(EditDefaultsOnly)
     TSubclassOf<ASnake> SnakeActorClass;
 protected:
-    virtual void BeginPlay() override
-    {
-        Super::BeginPlay();
-        SetActorRotation(FRotator(-90, 0, 0));
-        CreateSnakeActor();
-    }
+    virtual void BeginPlay() override;
 
 public:	
 	// Called every frame

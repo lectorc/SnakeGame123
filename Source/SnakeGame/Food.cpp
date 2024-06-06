@@ -17,6 +17,7 @@ AFood::AFood()
 void AFood::BeginPlay()
 {
 	Super::BeginPlay();
+    Spawn();
 	
 }
 
@@ -34,8 +35,23 @@ void AFood::Interact(AActor* Interactor, bool bIsHead)
         auto Snake = Cast<ASnake>(Interactor);
         if (IsValid(Snake))
         {
+            Spawn();
             Snake->AddSnakeElement(1);
         }
     }
+}
+
+void AFood::Spawn()
+{
+    int startX = -2300;
+    int endX = 2320;
+    int xLock = rand() % (endX - startX + 1) + startX; // Вычисление места спавна по x
+    int startY = -2310;
+    int endY = 2310;
+    int yLock = rand() % (endY - startY + 1) + startY; //Вычисление места спавна Y
+    FVector RandLocation(xLock, yLock, 0);
+    FTransform RandTransform(RandLocation);
+    AFood* FoodSpawn = GetWorld()->SpawnActor<AFood>(FoodClass, RandTransform);
+
 }
 

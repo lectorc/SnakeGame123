@@ -16,6 +16,8 @@ class SNAKEGAME_API AFood : public AActor, public IInteractable
 public:	
 	// Sets default values for this actor's properties
 	AFood();
+    UPROPERTY(EditDefaultsOnly)
+    TSubclassOf<AFood> FoodClass;
 
 protected:
 	// Called when the game starts or when spawned
@@ -26,5 +28,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
     virtual void Interact(AActor* Interactor, bool bIsHead) override;
+
+    UFUNCTION(BlueprintCallable)
+    void Spawn();
+    
 
 };
