@@ -26,10 +26,17 @@ void ASnake::BeginPlay()
 }
 
 // Called every frame
-void ASnake::Tick(float DeltaTime, bool wasMove)
-{
+void ASnake::Tick(float DeltaTime, bool canMove)
+{   
     Super::Tick(DeltaTime);
-    Move();
+    canMove = true;
+    if (canMove == true)
+    {
+        Move();
+        canMove = false;
+        
+    }
+    
 }
 
 void ASnake::ToggleHidden(AActor* Actor, bool bNewHidden)
