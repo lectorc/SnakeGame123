@@ -4,6 +4,8 @@
 
 #include "Food.h"
 #include "Snake.h"
+#include "SlowingFood.h"
+#include "BoostFood.h"
 
 // Sets default values
 AFood::AFood()
@@ -35,7 +37,6 @@ void AFood::Interact(AActor* Interactor, bool bIsHead)
         auto Snake = Cast<ASnake>(Interactor);
         if (IsValid(Snake))
         {
-            Spawn();
             Snake->AddSnakeElement(1);
         }
     }
@@ -49,9 +50,22 @@ void AFood::Spawn()
     int startY = -2310;
     int endY = 2310;
     int yLock = rand() % (endY - startY + 1) + startY; //Вычисление места спавна Y
+    int Buff = rand();
+    int BuffRemain = Buff % 2;
     FVector RandLocation(xLock, yLock, 0);
     FTransform RandTransform(RandLocation);
-    AFood* FoodSpawn = GetWorld()->SpawnActor<AFood>(FoodClass, RandTransform);
+    if (BuffRemain == 0)
+    {
+      ASlowingFood->SetActorLocation(RandLocation);
+    }
+    else
+    {
+      ABoostFood->SetActorLocation(RandLocation);
+    }
+    
+    
 
 }
+
+
 

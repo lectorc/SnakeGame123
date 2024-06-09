@@ -31,6 +31,7 @@ public:
 
     UFUNCTION(BlueprintCallable)
     void Spawn();
-    
+    UFUNCTION()
+    virtual void RandomBuff();
 
 };
