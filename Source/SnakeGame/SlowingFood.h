@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Food.h"
+#include "Interactable.h"
 #include "SlowingFood.generated.h"
+
 
 /**
  * 
@@ -13,8 +15,7 @@ UCLASS()
 class SNAKEGAME_API ASlowingFood : public AFood
 {
 	GENERATED_BODY()
-	
-
+    
     UFUNCTION(BlueprintCallable)
     virtual void Slowing();
 };

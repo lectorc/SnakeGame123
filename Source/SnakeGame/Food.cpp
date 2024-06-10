@@ -19,8 +19,6 @@ AFood::AFood()
 void AFood::BeginPlay()
 {
 	Super::BeginPlay();
-    Spawn();
-	
 }
 
 // Called every frame
@@ -44,28 +42,25 @@ void AFood::Interact(AActor* Interactor, bool bIsHead)
 
 void AFood::Spawn()
 {
-    int startX = -2300;
-    int endX = 2320;
+    int startX = -1430;
+    int endX = 1430;
     int xLock = rand() % (endX - startX + 1) + startX; // Вычисление места спавна по x
-    int startY = -2310;
-    int endY = 2310;
+    int startY = -1430;
+    int endY = 1430;
     int yLock = rand() % (endY - startY + 1) + startY; //Вычисление места спавна Y
     int Buff = rand();
     int BuffRemain = Buff % 2;
     FVector RandLocation(xLock, yLock, 0);
     FTransform RandTransform(RandLocation);
-    if (BuffRemain == 0)
+    if (FoodClasses.Num() == 0) return;
     {
-      ASlowingFood->SetActorLocation(RandLocation);
+        TSubclassOf<AFood> RandomClass = FoodClass = FoodClasses[FMath::RandRange(0, FoodClasses.Num() - 1)];
+        GetWorld()->SpawnActor<AFood>(RandomClass, RandTransform);
+        this->Destroy();
     }
-    else
-    {
-      ABoostFood->SetActorLocation(RandLocation);
-    }
-    
-    
-
 }
+
+
 
 
 

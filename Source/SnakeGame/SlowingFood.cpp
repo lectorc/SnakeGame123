@@ -2,16 +2,15 @@
 
 
 #include "SlowingFood.h"
-#include "Snake.h"
 #include "Thread"
 #include "chrono"
+#include "Snake.h"
 
-
-ASnake::ASnake()
+void ASlowingFood::Slowing()
 {
-    MovementSpeed = 5;
-    ElementSize = 200;
-    using namespace std::this_thread;
-    using namespace std::chrono;
-    sleep_for(seconds(1));
+}
+
+void Spawn()
+{
+
 }

@@ -2,4 +2,5 @@
 
 
 #include "BoostFood.h"
+#include "Snake.h"
 

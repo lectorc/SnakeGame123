@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Food.h"
+#include "Interactable.h"
 #include "BoostFood.generated.h"
+
 
 /**
  * 

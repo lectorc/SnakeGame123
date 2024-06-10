@@ -31,7 +31,6 @@ public:
 
     UFUNCTION(BlueprintCallable)
     void Spawn();
-    UFUNCTION()
-    virtual void RandomBuff();
-
+    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    TArray<TSubclassOf<AFood> > FoodClasses;
 };
