@@ -32,8 +32,8 @@ public:
 protected:
     virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
+public:
+
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input

@@ -10,7 +10,10 @@ void ASlowingFood::Slowing()
 {
 }
 
-void Spawn()
+void ASlowingFood::Spawn()
 {
+}
 
+void ASlowingFood:: (AActor* Interactor, bool bIsHead)
+{
 }

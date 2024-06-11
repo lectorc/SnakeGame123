@@ -30,7 +30,7 @@ public:
     virtual void Interact(AActor* Interactor, bool bIsHead) override;
 
     UFUNCTION(BlueprintCallable)
-    void Spawn();
+    virtual void Spawn();
     UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
     TArray<TSubclassOf<AFood> > FoodClasses;
 };

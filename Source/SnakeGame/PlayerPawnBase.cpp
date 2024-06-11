@@ -34,14 +34,14 @@ void APlayerPawnBase::Tick(float DeltaTime)
 // Called to bind functionality to input
 void APlayerPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
+    Super::SetupPlayerInputComponent(PlayerInputComponent);
     PlayerInputComponent->BindAxis("Horizontal", this, &APlayerPawnBase::HandlePlayerHorizontalInput);
     PlayerInputComponent->BindAxis("Vertical", this, &APlayerPawnBase::HandlePlayerVerticalInput);
 
 }
 
 void APlayerPawnBase::HandlePlayerVerticalInput(float value)
-{
+{  
     if (IsValid(SnakeActor))
     {
         if (value > 0 && SnakeActor->LastMoveDirection!=EMovementDirection::DOWN)

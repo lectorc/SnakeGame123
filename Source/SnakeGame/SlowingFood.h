@@ -17,6 +17,10 @@ class SNAKEGAME_API ASlowingFood : public AFood
 	GENERATED_BODY()
     
     UFUNCTION(BlueprintCallable)
-    virtual void Slowing();
+    virtual void Slowing() ;
+
+    virtual void Spawn() override;
+
+    virtual void Interact(AActor* Interactor, bool bIsHead) override;
 };
 
