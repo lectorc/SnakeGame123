@@ -5,7 +5,9 @@
 #include "CoreMinimal.h"
 #include "Snake.h"
 #include "GameFramework/Pawn.h"
+#include "Kismet/GameplayStatics.h"
 #include "PlayerPawnBase.generated.h"
+
 
 
 
@@ -18,7 +20,7 @@ class SNAKEGAME_API APlayerPawnBase : public APawn
     GENERATED_BODY()
 
 public:
-    // Sets default values for this pawn's properties
+    
 	APlayerPawnBase();
 
     UPROPERTY(BlueprintReadWrite) 
@@ -49,4 +51,6 @@ public:
 
     UFUNCTION()
     void HandlePlayerHorizontalInput(float value);
+
+    
 };

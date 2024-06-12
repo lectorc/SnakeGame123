@@ -4,16 +4,18 @@
 #include "PlayerPawnBase.h"
 #include "Camera/CameraComponent.h"
 #include "Components/InputComponent.h"
+#include "Kismet/GameplayStatics.h"
+
 
 
 // Sets default values
 APlayerPawnBase::APlayerPawnBase()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+    // Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+    PrimaryActorTick.bCanEverTick = true;
 
     PawnCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("PawnCamera"));
-        RootComponent = PawnCamera;
+    RootComponent = PawnCamera;
 }
 
 
@@ -23,6 +25,9 @@ inline void APlayerPawnBase::BeginPlay()
     Super::BeginPlay();
     SetActorRotation(FRotator(-90, 0, 0));
     CreateSnakeActor();
+    
+    
+   
 }
 
 void APlayerPawnBase::Tick(float DeltaTime)
@@ -37,11 +42,12 @@ void APlayerPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
     Super::SetupPlayerInputComponent(PlayerInputComponent);
     PlayerInputComponent->BindAxis("Horizontal", this, &APlayerPawnBase::HandlePlayerHorizontalInput);
     PlayerInputComponent->BindAxis("Vertical", this, &APlayerPawnBase::HandlePlayerVerticalInput);
-
 }
 
 void APlayerPawnBase::HandlePlayerVerticalInput(float value)
 {  
+    
+    
     if (IsValid(SnakeActor))
     {
         if (value > 0 && SnakeActor->LastMoveDirection!=EMovementDirection::DOWN)

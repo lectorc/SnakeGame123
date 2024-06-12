@@ -15,12 +15,15 @@ UCLASS()
 class SNAKEGAME_API ASlowingFood : public AFood
 {
 	GENERATED_BODY()
-    
-    UFUNCTION(BlueprintCallable)
-    virtual void Slowing() ;
+
+    TSubclassOf<ASlowingFood> SlowingFoodClass;
 
     virtual void Spawn() override;
 
     virtual void Interact(AActor* Interactor, bool bIsHead) override;
+public:
+
+    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    TArray<TSubclassOf<ASlowingFood> > SlowingFoodClasses;
 };
 

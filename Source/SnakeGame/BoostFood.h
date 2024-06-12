@@ -14,9 +14,14 @@
 UCLASS()
 class SNAKEGAME_API ABoostFood : public AFood
 {
+
 	GENERATED_BODY()
+    TSubclassOf<ABoostFood> BoostFoodClass;
 	
     virtual void Spawn() override;
 
     virtual void Interact(AActor* Interactor, bool bIsHead) override;
+public:
+    UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+    TArray<TSubclassOf<ABoostFood> > BoostFoodClasses;
 };

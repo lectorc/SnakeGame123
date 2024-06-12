@@ -27,14 +27,12 @@ void ASnake::BeginPlay()
 
 // Called every frame
 void ASnake::Tick(float DeltaTime)
-{   
+{  
     Super::Tick(DeltaTime);
-    bool canMove = true;
     if (canMove == true)
     {
         Move();
-        canMove = false;
-        
+      
     }
     
 }

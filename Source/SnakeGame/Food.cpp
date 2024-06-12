@@ -48,8 +48,6 @@ void AFood::Spawn()
     int startY = -1430;
     int endY = 1430;
     int yLock = rand() % (endY - startY + 1) + startY; //Вычисление места спавна Y
-    int Buff = rand();
-    int BuffRemain = Buff % 2;
     FVector RandLocation(xLock, yLock, 0);
     FTransform RandTransform(RandLocation);
     if (FoodClasses.Num() == 0) return;

@@ -47,7 +47,8 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	// Called every frame
+    bool canMove = true;
+
     virtual void Tick(float DeltaTime);
     UFUNCTION(BlueprintCallable)
     void AddSnakeElement(int ElementsNum = 1);
