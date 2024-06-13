@@ -21,7 +21,6 @@ void ASlowingFood::Interact(AActor* Interactor, bool bIsHead)
         {
             Snake->MovementSpeed = 10.f;
             Snake->AddSnakeElement(1);
-            this->Destroy();
             int startX = -1430;
             int endX = 1430;
             int xLock = rand() % (endX - startX + 1) + startX; // Вычисление места спавна по x
@@ -34,8 +33,11 @@ void ASlowingFood::Interact(AActor* Interactor, bool bIsHead)
             {
                 TSubclassOf<ASlowingFood> RandomClass = SlowingFoodClass = SlowingFoodClasses[FMath::RandRange(0, SlowingFoodClasses.Num() - 1)];
                 GetWorld()->SpawnActor<ASlowingFood>(RandomClass, RandTransform);
-                
+
+
             }
         }
-    }
+            
+        }
+        this->Destroy();
 }

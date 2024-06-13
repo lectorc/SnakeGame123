@@ -46,7 +46,8 @@ void APlayerPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 
 void APlayerPawnBase::HandlePlayerVerticalInput(float value)
 {  
-    
+    ASnake* Snake = Cast<ASnake>(UGameplayStatics::GetActorOfClass(GetWorld(), ASnake::StaticClass()));
+    if (Snake == nullptr) return;
     
     if (IsValid(SnakeActor))
     {

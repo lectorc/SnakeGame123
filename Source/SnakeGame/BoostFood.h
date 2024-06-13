@@ -21,7 +21,15 @@ class SNAKEGAME_API ABoostFood : public AFood
     virtual void Spawn() override;
 
     virtual void Interact(AActor* Interactor, bool bIsHead) override;
+    
+    virtual void Boost(AActor* Interactor);
 public:
     UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
     TArray<TSubclassOf<ABoostFood> > BoostFoodClasses;
+private:
+    UPROPERTY(EditDefaultsOnly)
+    float BuffTime = 3.0f;
+
+    FTimerHandle RecoveryTimerHandle;
+
 };

@@ -23,6 +23,9 @@ public:
     
 	APlayerPawnBase();
 
+    
+    
+
     UPROPERTY(BlueprintReadWrite) 
     UCameraComponent* PawnCamera;
 
