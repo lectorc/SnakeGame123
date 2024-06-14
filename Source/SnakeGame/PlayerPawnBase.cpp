@@ -46,20 +46,24 @@ void APlayerPawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 
 void APlayerPawnBase::HandlePlayerVerticalInput(float value)
 {  
-    ASnake* Snake = Cast<ASnake>(UGameplayStatics::GetActorOfClass(GetWorld(), ASnake::StaticClass()));
+    Snake = Cast<ASnake>(UGameplayStatics::GetActorOfClass(GetWorld(), ASnake::StaticClass()));
     if (Snake == nullptr) return;
-    
-    if (IsValid(SnakeActor))
+    if (Snake->canMove == true)
     {
-        if (value > 0 && SnakeActor->LastMoveDirection!=EMovementDirection::DOWN)
+        if (IsValid(SnakeActor))
         {
-            SnakeActor->LastMoveDirection = EMovementDirection::UP;
+            if (value > 0 && SnakeActor->LastMoveDirection != EMovementDirection::DOWN)
+            {
+                SnakeActor->LastMoveDirection = EMovementDirection::UP;
+                Snake->canMove = false;
+            }
+            else if (value < 0 && SnakeActor->LastMoveDirection != EMovementDirection::UP)
+            {
+                SnakeActor->LastMoveDirection = EMovementDirection::DOWN;
+                Snake->canMove = false;
+            }
+
         }
-        else if (value < 0 && SnakeActor->LastMoveDirection != EMovementDirection::UP)
-        {
-            SnakeActor->LastMoveDirection = EMovementDirection::DOWN;
-        }
-        
     }
 }
 
@@ -67,13 +71,20 @@ void APlayerPawnBase::HandlePlayerHorizontalInput(float value)
 {
     if (IsValid(SnakeActor))
     {
-        if (value > 0 && SnakeActor->LastMoveDirection != EMovementDirection::LEFT)
+        Snake = Cast<ASnake>(UGameplayStatics::GetActorOfClass(GetWorld(), ASnake::StaticClass()));
+        if (Snake == nullptr) return;
+        if (Snake->canMove == true)
         {
-            SnakeActor->LastMoveDirection = EMovementDirection::RIGHT;
-        }
-        else if (value < 0 && SnakeActor->LastMoveDirection != EMovementDirection::RIGHT)
-        {
-            SnakeActor->LastMoveDirection = EMovementDirection::LEFT;
+            if (value > 0 && SnakeActor->LastMoveDirection != EMovementDirection::LEFT)
+            {
+                SnakeActor->LastMoveDirection = EMovementDirection::RIGHT;
+                Snake->canMove = false;
+            }
+            else if (value < 0 && SnakeActor->LastMoveDirection != EMovementDirection::RIGHT)
+            {
+                SnakeActor->LastMoveDirection = EMovementDirection::LEFT;
+                Snake->canMove = false;
+            }
         }
     }
 }

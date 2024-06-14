@@ -33,7 +33,7 @@ void ABoostFood::Interact(AActor* Interactor, bool bIsHead)
         {
             Snake->MovementSpeed = 50.f;
             Snake->AddSnakeElement(1);
-            GetWorldTimerManager().SetTimer(RecoveryTimerHandle, this, ABoostFood::Boost, 0.f, false);
+           // GetWorld()->GetWorldTimerManager().SetTimer(RecoveryTimerHandle, this, &ThisClass::Boost, 0.f, false);
             return Super::Interact(Interactor, bIsHead);
             this->Destroy();
             

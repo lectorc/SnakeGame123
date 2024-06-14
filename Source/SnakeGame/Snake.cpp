@@ -29,9 +29,11 @@ void ASnake::BeginPlay()
 void ASnake::Tick(float DeltaTime)
 {  
     Super::Tick(DeltaTime);
+    canMove = true;
     if (canMove == true)
     {
         Move();
+        
       
     }
     

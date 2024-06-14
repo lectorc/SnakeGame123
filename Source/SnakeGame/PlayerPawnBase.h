@@ -23,7 +23,8 @@ public:
     
 	APlayerPawnBase();
 
-    
+  UPROPERTY()
+  ASnake* Snake = nullptr;
     
 
     UPROPERTY(BlueprintReadWrite) 
