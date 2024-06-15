@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "Food.h"
 #include "Interactable.h"
+#include "Snake.h"
+#include "Kismet/GameplayStatics.h"
 #include "SlowingFood.generated.h"
 
 
@@ -16,14 +18,26 @@ class SNAKEGAME_API ASlowingFood : public AFood
 {
 	GENERATED_BODY()
 
+    
+
     TSubclassOf<ASlowingFood> SlowingFoodClass;
 
     virtual void Spawn() override;
 
+    void Slowing();
+
+    UPROPERTY(EditDefaultsOnly)
+    float SlowingTime = 3.0f;
+
     virtual void Interact(AActor* Interactor, bool bIsHead) override;
 public:
 
+    UPROPERTY()
+    ASnake* SnakeIndex = nullptr;
+
     UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
     TArray<TSubclassOf<ASlowingFood> > SlowingFoodClasses;
+
+    FTimerHandle RecoveryTimerHandle;
 };
 

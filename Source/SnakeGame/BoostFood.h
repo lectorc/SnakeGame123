@@ -5,7 +5,10 @@
 #include "CoreMinimal.h"
 #include "Food.h"
 #include "Interactable.h"
+#include "Kismet/GameplayStatics.h"
+#include "Snake.h"
 #include "BoostFood.generated.h"
+
 
 
 /**
@@ -16,20 +19,28 @@ class SNAKEGAME_API ABoostFood : public AFood
 {
 
 	GENERATED_BODY()
+    
+    
+
     TSubclassOf<ABoostFood> BoostFoodClass;
 	
     virtual void Spawn() override;
 
     virtual void Interact(AActor* Interactor, bool bIsHead) override;
     
-    virtual void Boost(AActor* Interactor);
+    virtual void Boost();
 public:
     UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
     TArray<TSubclassOf<ABoostFood> > BoostFoodClasses;
+
+    UPROPERTY()
+    ASnake* SnakeIndex = nullptr;
 private:
     UPROPERTY(EditDefaultsOnly)
     float BuffTime = 3.0f;
 
     FTimerHandle RecoveryTimerHandle;
+
+    
 
 };

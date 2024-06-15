@@ -33,8 +33,7 @@ void ABoostFood::Interact(AActor* Interactor, bool bIsHead)
         {
             Snake->MovementSpeed = 50.f;
             Snake->AddSnakeElement(1);
-           // GetWorld()->GetWorldTimerManager().SetTimer(RecoveryTimerHandle, this, &ThisClass::Boost, 0.f, false);
-            return Super::Interact(Interactor, bIsHead);
+            GetWorldTimerManager().SetTimer(RecoveryTimerHandle, this, &ABoostFood::Boost, 0.f, false, -1);
             this->Destroy();
             
            
@@ -43,8 +42,9 @@ void ABoostFood::Interact(AActor* Interactor, bool bIsHead)
     
 }
 
-void ABoostFood::Boost(AActor* Interactor)
+void ABoostFood::Boost()
 {
-    auto Snake = Cast<ASnake>(Interactor);
-    Snake->MovementSpeed = 10.f;
+    SnakeIndex = Cast<ASnake>(UGameplayStatics::GetActorOfClass(GetWorld(), ASnake::StaticClass()));
+    if (SnakeIndex == nullptr) return;
+    SnakeIndex->MovementSpeed = 10.f;
 }
