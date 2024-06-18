@@ -5,11 +5,13 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interactable.h"
+#include "FoodSpawner.h"
 #include "Food.generated.h"
+
     
 
 UCLASS()
-class SNAKEGAME_API AFood : public AActor, public IInteractable
+class SNAKEGAME_API AFood : public AActor, public IInteractable, public AFoodSpawner
 {
 	GENERATED_BODY()
 	
@@ -30,7 +32,7 @@ public:
     virtual void Interact(AActor* Interactor, bool bIsHead) override;
 
     UFUNCTION(BlueprintCallable)
-    virtual void Spawn();
+    virtual void Spawn() override;
     UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
     TArray<TSubclassOf<AFood> > FoodClasses;
 };
