@@ -5,6 +5,7 @@
 #include "Food.h"
 #include "Snake.h"
 #include "SlowingFood.h"
+#include "FoodSpawner.h"
 #include "BoostFood.h"
 
 // Sets default values
@@ -36,14 +37,14 @@ void AFood::Interact(AActor* Interactor, bool bIsHead)
         if (IsValid(Snake))
         {
             Snake->AddSnakeElement(1);
+            FoodSpawner = Cast<AFoodSpawner>(UGameplayStatics::GetActorOfClass(GetWorld(), AFoodSpawner::StaticClass()));
+            if (FoodSpawner == nullptr) return;
+            FoodSpawner->Spawn();
         }
     }
 }
 
-void AFood::Spawn()
-{
-    
-}
+
 
 
 

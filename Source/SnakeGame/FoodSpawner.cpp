@@ -2,7 +2,7 @@
 
 
 #include "FoodSpawner.h"
-#include "Kismet/GameplayStatics.h"
+#include "Food.h"
 
 // Sets default values
 AFoodSpawner::AFoodSpawner()
@@ -36,11 +36,11 @@ void AFoodSpawner::Spawn()
     int yLock = rand() % (endY - startY + 1) + startY; //Вычисление места спавна Y
     FVector RandLocation(xLock, yLock, 0);
     FTransform RandTransform(RandLocation);
-    Food = Cast<AFood>(UGameplayStatics::GetActorOfClass(GetWorld(), ASnake::StaticClass()));
-    if (Snake == nullptr) return;
-    if (FoodClasses.Num() == 0) return;
+    Food = Cast<AFood>(UGameplayStatics::GetActorOfClass(GetWorld(), AFood::StaticClass()));
+    if (Food == nullptr) return;
+    if (Food->FoodClasses.Num() == 0) return;
     {
-        TSubclassOf<AFood> RandomClass = FoodClass = FoodClasses[FMath::RandRange(0, FoodClasses.Num() - 1)];
+        TSubclassOf<AFood> RandomClass = Food->FoodClass = Food->FoodClasses[FMath::RandRange(0, Food->FoodClasses.Num() - 1)];
         GetWorld()->SpawnActor<AFood>(RandomClass, RandTransform);
         this->Destroy();
     }

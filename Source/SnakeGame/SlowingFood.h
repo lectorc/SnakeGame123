@@ -22,7 +22,7 @@ class SNAKEGAME_API ASlowingFood : public AFood
 
     TSubclassOf<ASlowingFood> SlowingFoodClass;
 
-    virtual void Spawn() override;
+    
 
     void Slowing();
 

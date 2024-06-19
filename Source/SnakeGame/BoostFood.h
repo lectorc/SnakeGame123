@@ -24,7 +24,6 @@ class SNAKEGAME_API ABoostFood : public AFood
 
     TSubclassOf<ABoostFood> BoostFoodClass;
 	
-    virtual void Spawn() override;
 
     virtual void Interact(AActor* Interactor, bool bIsHead) override;
     

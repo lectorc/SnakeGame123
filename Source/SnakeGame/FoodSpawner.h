@@ -3,10 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Food.h"
 #include "GameFramework/Actor.h"
 #include "Kismet/GameplayStatics.h"
 #include "FoodSpawner.generated.h"
+
 
 UCLASS()
 class SNAKEGAME_API AFoodSpawner : public AActor
@@ -19,6 +19,7 @@ public:
 
     UPROPERTY()
     AFood* Food = nullptr;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -26,6 +27,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
     virtual void Spawn();
 
 };
