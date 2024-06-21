@@ -3,6 +3,7 @@
 
 #include "FoodSpawner.h"
 #include "Food.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AFoodSpawner::AFoodSpawner()
@@ -42,7 +43,10 @@ void AFoodSpawner::Spawn()
     {
         TSubclassOf<AFood> RandomClass = Food->FoodClass = Food->FoodClasses[FMath::RandRange(0, Food->FoodClasses.Num() - 1)];
         GetWorld()->SpawnActor<AFood>(RandomClass, RandTransform);
+        FVector DespawnVector(0, 0, 0);
+        this->SetActorLocation(DespawnVector);
         this->Destroy();
     }
+    
 }
 

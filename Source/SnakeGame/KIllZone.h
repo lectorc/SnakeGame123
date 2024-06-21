@@ -4,23 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Kismet/GameplayStatics.h"
-#include "FoodSpawner.generated.h"
-
-
-class AFood;
+#include "Interactable.h"
+#include "Snake.h"
+#include "KIllZone.generated.h"
 
 UCLASS()
-class SNAKEGAME_API AFoodSpawner : public AActor
+class SNAKEGAME_API AKIllZone : public AActor, public IInteractable
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AFoodSpawner();
-
-    UPROPERTY()
-    AFood* Food = nullptr;
+	AKIllZone();
 
 protected:
 	// Called when the game starts or when spawned
@@ -30,7 +25,5 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-    UFUNCTION(BlueprintCallable)
-    void Spawn();
-
+    virtual void Interact(AActor* Interactor, bool bIsHead) override;
 };
