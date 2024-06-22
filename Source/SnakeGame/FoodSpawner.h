@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Snake.h"
 #include "Kismet/GameplayStatics.h"
 #include "FoodSpawner.generated.h"
 
@@ -21,6 +22,14 @@ public:
 
     UPROPERTY()
     AFood* Food = nullptr;
+     
+    UPROPERTY()
+    ASnake* SnakeIndex = nullptr;
+
+    UPROPERTY(EditDefaultsOnly)
+    float SlowingTime = 3.0f;
+
+    FTimerHandle RecoveryTimerHandle;
 
 protected:
 	// Called when the game starts or when spawned
@@ -32,5 +41,16 @@ public:
 
     UFUNCTION(BlueprintCallable)
     void Spawn();
+    
+    UFUNCTION(BlueprintCallable)
+    void Slowing();
 
+    UFUNCTION(BlueprintCallable)
+    void SlowingEnd();
+
+    UFUNCTION(BlueprintCallable)
+    void Boost();
+
+    UFUNCTION(BlueprintCallable)
+    void BoostEnd();
 };

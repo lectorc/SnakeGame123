@@ -14,22 +14,13 @@ void ABoostFood::Interact(AActor* Interactor, bool bIsHead)
         auto Snake = Cast<ASnake>(Interactor);
         if (IsValid(Snake))
         {
-            Snake->MovementSpeed =  30.f;
             Snake->AddSnakeElement(1);
-            GetWorldTimerManager().SetTimer(RecoveryTimerHandle, this, &ABoostFood::Boost, 1.f, false, -1);
-            
-            
-            
-           
+            FoodSpawner = Cast<AFoodSpawner>(UGameplayStatics::GetActorOfClass(GetWorld(), AFoodSpawner::StaticClass()));
+            FoodSpawner->Spawn();
+            FoodSpawner->Boost();
+            this->Destroy();
         }
     }
     
 }
 
-void ABoostFood::Boost()
-{
-    SnakeIndex = Cast<ASnake>(UGameplayStatics::GetActorOfClass(GetWorld(), ASnake::StaticClass()));
-    if (SnakeIndex == nullptr) return;
-    SnakeIndex->MovementSpeed = 10.f;
-    SnakeIndex->SetActorTickInterval(1 / SnakeIndex->MovementSpeed);
-}

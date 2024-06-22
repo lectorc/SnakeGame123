@@ -22,9 +22,6 @@ class SNAKEGAME_API ASlowingFood : public AFood
 
     TSubclassOf<ASlowingFood> SlowingFoodClass;
 
-    
-
-    void Slowing();
 
     UPROPERTY(EditDefaultsOnly)
     float SlowingTime = 3.0f;

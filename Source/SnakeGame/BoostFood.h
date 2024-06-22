@@ -27,7 +27,7 @@ class SNAKEGAME_API ABoostFood : public AFood
 
     virtual void Interact(AActor* Interactor, bool bIsHead) override;
     
-    virtual void Boost();
+  
 public:
     UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
     TArray<TSubclassOf<ABoostFood> > BoostFoodClasses;
