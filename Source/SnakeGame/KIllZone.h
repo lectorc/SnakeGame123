@@ -26,4 +26,9 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
     virtual void Interact(AActor* Interactor, bool bIsHead) override;
+
+    UFUNCTION(BlueprintNativeEvent)
+    void SnakeDestroyed();
+    
+    
 };

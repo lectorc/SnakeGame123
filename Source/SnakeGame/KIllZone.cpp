@@ -33,8 +33,15 @@ void AKIllZone::Interact(AActor* Interactor, bool bIsHead)
             auto Snake = Cast<ASnake>(Interactor);
             if (IsValid(Snake))
             {
+
                 Snake->Destroy();
+                SnakeDestroyed();
             }
         }
 }
+
+void AKIllZone::SnakeDestroyed()
+{
+}
+
 

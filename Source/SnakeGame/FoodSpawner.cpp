@@ -43,8 +43,7 @@ void AFoodSpawner::Spawn()
     {
         TSubclassOf<AFood> RandomClass = Food->FoodClass = Food->FoodClasses[FMath::RandRange(0, Food->FoodClasses.Num() - 1)];
         GetWorld()->SpawnActor<AFood>(RandomClass, RandTransform);
-        FVector DespawnVector(0, 0, 0);
-        this->SetActorLocation(DespawnVector);
+      
        
     }
     
@@ -55,28 +54,28 @@ void AFoodSpawner::Slowing()
     SnakeIndex = Cast<ASnake>(UGameplayStatics::GetActorOfClass(GetWorld(), ASnake::StaticClass()));
     SnakeIndex->MovementSpeed = 1.f;
     SnakeIndex->SetActorTickInterval(1 / SnakeIndex->MovementSpeed);
-    GetWorldTimerManager().SetTimer(RecoveryTimerHandle, this, &AFoodSpawner::SlowingEnd, 1.f, false, -1);
+    GetWorldTimerManager().SetTimer(RecoveryTimerHandle, this, &AFoodSpawner::SlowingEnd, 3.f, false, -1);
 }
 
 void AFoodSpawner::SlowingEnd()
 {
     SnakeIndex = Cast<ASnake>(UGameplayStatics::GetActorOfClass(GetWorld(), ASnake::StaticClass()));
-    SnakeIndex->MovementSpeed = 10.f;
+    SnakeIndex->MovementSpeed = 2.f;
     SnakeIndex->SetActorTickInterval(1 / SnakeIndex->MovementSpeed);
 }
 
 void AFoodSpawner::Boost()
 {
     SnakeIndex = Cast<ASnake>(UGameplayStatics::GetActorOfClass(GetWorld(), ASnake::StaticClass()));
-    SnakeIndex->MovementSpeed = 15.f;
+    SnakeIndex->MovementSpeed = 5.f;
     SnakeIndex->SetActorTickInterval(1 / SnakeIndex->MovementSpeed);
-    GetWorldTimerManager().SetTimer(RecoveryTimerHandle, this, &AFoodSpawner::BoostEnd, 1.f, false, -1);
+    GetWorldTimerManager().SetTimer(RecoveryTimerHandle, this, &AFoodSpawner::BoostEnd, 3.f, false, -1);
 }
 
 void AFoodSpawner::BoostEnd()
 {
     SnakeIndex = Cast<ASnake>(UGameplayStatics::GetActorOfClass(GetWorld(), ASnake::StaticClass()));
-    SnakeIndex->MovementSpeed = 10.f;
+    SnakeIndex->MovementSpeed = 2.f;
     SnakeIndex->SetActorTickInterval(1 / SnakeIndex->MovementSpeed);
 }
 
