@@ -29,7 +29,7 @@ public:
     ASnake* SnakeOwner; 
 protected:
 	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+    virtual void BeginPlay() override;
 
 public:	
 	// Called every frame
@@ -37,7 +37,10 @@ public:
 
     UFUNCTION(BlueprintNativeEvent)
     void SetFirstElementType();
-    void SetFirstElementType_Implementation();
+    void SetFirstElementType_Implementation()
+    {
+        MeshComponent->OnComponentBeginOverlap.AddDynamic(this, &ASnakeElementBase::HandleBeginOverlap);
+    }
 
     virtual void Interact(AActor* Interactor, bool bIsHead) override;
 

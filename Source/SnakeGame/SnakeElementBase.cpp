@@ -29,11 +29,6 @@ void ASnakeElementBase::Tick(float DeltaTime)
 }
 
 
-void ASnakeElementBase::SetFirstElementType_Implementation()
-{
-    MeshComponent->OnComponentBeginOverlap.AddDynamic(this, &ASnakeElementBase::HandleBeginOverlap);
-}
-
 void ASnakeElementBase::Interact(AActor* Interactor, bool bIsHead)
 {
     auto Snake = Cast<ASnake>(Interactor);

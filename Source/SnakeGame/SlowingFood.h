@@ -22,9 +22,14 @@ class SNAKEGAME_API ASlowingFood : public AFood
 
     TSubclassOf<ASlowingFood> SlowingFoodClass;
 
+    UPROPERTY()
+    AFood* Food = nullptr;
 
     UPROPERTY(EditDefaultsOnly)
     float SlowingTime = 3.0f;
+
+    UFUNCTION(BlueprintCallable)
+    void Spawn();
 
     virtual void Interact(AActor* Interactor, bool bIsHead) override;
 public:

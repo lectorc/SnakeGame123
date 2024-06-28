@@ -29,6 +29,7 @@ public:
 
     UFUNCTION(BlueprintNativeEvent)
     void SnakeDestroyed();
+    void SnakeDestroyed_Implementation();
     
     
 };

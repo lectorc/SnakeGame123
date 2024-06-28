@@ -33,7 +33,14 @@ public:
     TArray<TSubclassOf<ABoostFood> > BoostFoodClasses;
 
     UPROPERTY()
+    AFood* Food = nullptr;
+
+
+    UPROPERTY()
     ASnake* SnakeIndex = nullptr;
+
+    UFUNCTION(BlueprintCallable)
+    void Spawn();
 private:
     UPROPERTY(EditDefaultsOnly)
     float BuffTime = 3.0f;

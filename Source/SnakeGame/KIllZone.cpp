@@ -40,8 +40,9 @@ void AKIllZone::Interact(AActor* Interactor, bool bIsHead)
         }
 }
 
-void AKIllZone::SnakeDestroyed()
+void AKIllZone::SnakeDestroyed_Implementation()
 {
+    
 }
 
 
